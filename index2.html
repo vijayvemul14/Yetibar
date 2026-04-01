@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monochrome | Cinematic Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        .font-display { font-family: 'Syncopate', sans-serif; }
+
+        /* Cinematic Hero Video Overlay */
+        .video-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        .video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            filter: grayscale(100%) contrast(120%);
+            opacity: 0.6;
+        }
+
+        /* Animated Text Mask for Video */
+        .video-title {
+            font-size: 15vw;
+            line-height: 0.8;
+            background: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80');
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+            animation: pulse-color 8s infinite alternate;
+        }
+
+        @keyframes pulse-color {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            100% { filter: hue-rotate(360deg) brightness(1.5); }
+        }
+
+        /* Our Story: Floating Image Reveal */
+        .story-image-container {
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .story-image-container:hover { transform: scale(1.02); }
+        
+        .accent-box {
+            position: absolute;
+            border: 1px solid #fff;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+
+        /* Product Cards */
+        .product-card img { filter: grayscale(100%); transition: 0.5s ease; }
+        .product-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center mix-blend-difference">
+        <div class="font-display font-bold text-xl tracking-tighter">MNM/L</div>
+        <div class="space-x-10 text-[10px] uppercase tracking-[0.3em]">
+            <a href="#story" class="hover:line-through">Story</a>
+            <a href="#products" class="hover:line-through">Works</a>
+            <a href="#" class="bg-white text-black px-4 py-2">Order</a>
+        </div>
+    </nav>
+
+    <section class="video-container flex items-center justify-center">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-ink-flow-in-water-34351-large.mp4" type="video/mp4">
+        </video>
+        <div class="relative z-10 text-center">
+            <h1 class="font-display font-bold video-title animate__animated animate__fadeInUp">BOLD</h1>
+            <p class="mt-4 text-sm tracking-[1em] text-gray-400 uppercase opacity-0 animate__animated animate__fadeInUp animate__delay-1s">Spectrum in Shadows</p>
+        </div>
+        <div class="absolute bottom-10 left-10 flex flex-col items-start space-y-2 opacity-50">
+            <span class="text-[10px] rotate-90 origin-left">SCROLL</span>
+            <div class="w-[1px] h-20 bg-white mt-4"></div>
+        </div>
+    </section>
+
+    <section id="story" class="py-32 bg-[#0a0a0a] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-8 reveal-on-scroll">
+                    <h2 class="text-xs uppercase tracking-[0.5em] text-gray-500">The Narrative</h2>
+                    <h3 class="text-5xl md:text-7xl font-display font-bold leading-none">CRAFTED <br> IN SILENCE</h3>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        We stripped away the chaos to let the soul of your products speak. Our monochrome world isn't about the absence of color—it's about the <span class="text-white italic">celebration</span> of it. 
+                    </p>
+                    <div class="flex items-center space-x-4 group cursor-pointer">
+                        <div class="w-12 h-12 rounded-full border border-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <span class="text-xl">→</span>
+                        </div>
+                        <span class="font-bold tracking-widest text-xs uppercase">Full Story</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 relative">
+                    <div class="story-image-container">
+                        <img src="https://images.unsplash.com/photo-1490312278390-ab6414f84c86?auto=format&fit=crop&q=80" alt="Studio" class="w-full grayscale filter brightness-75">
+                        <div class="accent-box -top-4 -left-4 w-full h-full"></div>
+                        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-600 hidden md:flex items-center justify-center animate-spin-slow">
+                            <p class="text-[10px] text-white font-bold tracking-widest text-center px-4">THE ONLY COLOR IS YOU</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-24 bg-white text-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-display font-bold text-4xl mb-16 text-center">THE CANVAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="product-card group relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&q=80" class="w-full h-[500px] object-cover">
+                    <div class="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <p class="text-white bg-black px-3 py-1 text-xs font-bold uppercase tracking-widest">Neon Watch</p>
+                    </div>
+                </div>
+                <div class="product-card group relative overflow-hidden lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80" class="w-full h-[500px] object-cover">
+                </div>
+                <div class="product-card group relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&q=80" class="w-full h-[500px] object-cover">
+                </div>
+                <div class="product-card group relative overflow-hidden lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1520116467321-f14f163f5235?auto=format&fit=crop&q=80" class="w-full h-[500px] object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-10 border-t border-zinc-800 text-center">
+        <p class="text-[10px] tracking-[0.5em] text-gray-500 uppercase">© 2026 Monochrome Studio / All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Simple Scroll Reveal Logic
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

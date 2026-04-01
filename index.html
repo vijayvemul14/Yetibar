@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monochrome Showcase | Vibrant Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+        
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(45deg, #000 30%, #1a1a1a 100%);
+        }
+
+         /* Video Slider Styles */
+        .slider-container {
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active { opacity: 1; }
+        .slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) grayscale(0.3);
+        }
+
+
+        /* Product Card Hover Effect */
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #222;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #fff;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        /* New Nutrition Label Styles */
+    .nutrition-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        border: 1px solid #333;
+    }
+
+    .product-card:hover .nutrition-overlay {
+        opacity: 1;
+    }
+
+    .nutrition-line {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #333;
+        padding: 4px 0;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+        /* Custom Animated Slider Placeholder */
+        .slider-text {
+            animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+        }
+
+        @keyframes tracking-in-expand {
+            0% { letter-spacing: -0.5em; opacity: 0; }
+            40% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter">YETI<span class="font-light"> BAR</span></div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+                <a href="#story" class="hover:text-gray-400 transition">Our Story</a>
+                <a href="#products" class="hover:text-gray-400 transition">Products</a>
+                <a href="/about.html" class="hover:text-gray-400 transition">About</a>
+                <a href="/contact.html" class="border border-white px-4 py-1 hover:bg-white hover:text-black transition">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="slider-container" id="hero-slider">
+        <div class="slide active" data-index="0">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-granola-bar-42775-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl">
+                    <h2 class="font-header text-white text-5xl md:text-8xl mb-6 animate__animated animate__fadeInUp">RECHARGE</h2>
+                    <p class="text-zinc-300 tracking-[0.8em] uppercase text-xs animate__animated animate__fadeInUp animate__delay-1s">Nature's High Performance Fuel</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" data-index="1">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-person-eating-a-granola-bar-42774-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl">
+                    <h2 class="font-header text-white text-5xl md:text-8xl mb-6 animate__animated animate__fadeInUp">ENDURE</h2>
+                    <p class="text-zinc-300 tracking-[0.8em] uppercase text-xs animate__animated animate__fadeInUp animate__delay-1s">Sustained Peak Performance</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" data-index="2">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-training-on-the-beach-at-sunset-40291-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                <div class="max-w-4xl">
+                    <h2 class="font-header text-white text-5xl md:text-8xl mb-6 animate__animated animate__fadeInUp">EVOLVE</h2>
+                    <p class="text-zinc-300 tracking-[0.8em] uppercase text-xs animate__animated animate__fadeInUp animate__delay-1s">Clean Ingredients. Raw Power.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 right-10 flex space-x-4 z-20">
+            <div class="progress-bar w-12 h-[2px] bg-white transition-opacity duration-500 opacity-100" data-index="0"></div>
+            <div class="progress-bar w-12 h-[2px] bg-white transition-opacity duration-500 opacity-30" data-index="1"></div>
+            <div class="progress-bar w-12 h-[2px] bg-white transition-opacity duration-500 opacity-30" data-index="2"></div>
+        </div>
+    </section>
+
+
+
+    <section id="story" class="py-24 bg-white text-black">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold leading-tight">Share your story</h2>
+                <p class="text-lg text-gray-600">Our design philosophy is simple: strip away the noise. By creating a world of deep blacks and pure whites, we provide the perfect spotlight for the vibrant energy of your life.</p>
+                <a href="#" class="inline-block border-b-2 border-black pb-1 font-bold hover:text-gray-500 hover:border-gray-500 transition">Read the Manifesto</a>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80" alt="Minimalist Space" class="grayscale shadow-2xl">
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-black hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-sm uppercase tracking-widest text-gray-500 mb-2">Selected Works</h2>
+                    <h3 class="text-4xl font-bold">Product Collection</h3>
+                </div>
+                <div class="text-gray-400 text-sm">Scroll to explore</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="product-card bg-[#111] p-4">
+                    <div class="aspect-[4/5] bg-yellow-400 mb-6 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80" alt="Product" class="w-full h-full object-cover mix-blend-multiply hover:mix-blend-normal transition duration-500">
+                        <div class="nutrition-overlay">
+                        <h5 class="text-xs font-bold border-b-2 border-white pb-1 mb-2">NUTRITION FACTS</h5>
+                        <div class="nutrition-line"><span>Calories</span><span>240</span></div>
+                        <div class="nutrition-line"><span>Protein</span><span>12g</span></div>
+                        <div class="nutrition-line"><span>Total Fat</span><span>8g</span></div>
+                        <div class="nutrition-line"><span>Carbs</span><span>28g</span></div>
+                        <div class="nutrition-line"><span>Fiber</span><span>5g</span></div>
+                        <div class="mt-4 text-[10px] text-gray-500 italic">No added sugar. Organic ingredients.</div>
+                    </div>
+                    </div>
+                    <h4 class="text-xl font-bold">Solar Watch</h4>
+                    <p class="text-gray-500">$199.00</p>
+                </div>
+
+                <div class="product-card bg-[#111] p-4">
+                    <div class="aspect-[4/5] bg-red-500 mb-6 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80" alt="Product" class="w-full h-full object-cover mix-blend-multiply hover:mix-blend-normal transition duration-500">
+                        <div class="nutrition-overlay">
+                        <h5 class="text-xs font-bold border-b-2 border-white pb-1 mb-2">NUTRITION FACTS</h5>
+                        <div class="nutrition-line"><span>Calories</span><span>240</span></div>
+                        <div class="nutrition-line"><span>Protein</span><span>12g</span></div>
+                        <div class="nutrition-line"><span>Total Fat</span><span>8g</span></div>
+                        <div class="nutrition-line"><span>Carbs</span><span>28g</span></div>
+                        <div class="nutrition-line"><span>Fiber</span><span>5g</span></div>
+                        <div class="mt-4 text-[10px] text-gray-500 italic">No added sugar. Organic ingredients.</div>
+                    </div>
+                    </div>
+                    <h4 class="text-xl font-bold">Crimson Audio</h4>
+                    <p class="text-gray-500">$350.00</p>
+                </div>
+
+                <div class="product-card bg-[#111] p-4">
+                    <div class="aspect-[4/5] bg-blue-500 mb-6 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80" alt="Product" class="w-full h-full object-cover mix-blend-multiply hover:mix-blend-normal transition duration-500">
+                        <div class="nutrition-overlay">
+                        <h5 class="text-xs font-bold border-b-2 border-white pb-1 mb-2">NUTRITION FACTS</h5>
+                        <div class="nutrition-line"><span>Calories</span><span>240</span></div>
+                        <div class="nutrition-line"><span>Protein</span><span>12g</span></div>
+                        <div class="nutrition-line"><span>Total Fat</span><span>8g</span></div>
+                        <div class="nutrition-line"><span>Carbs</span><span>28g</span></div>
+                        <div class="nutrition-line"><span>Fiber</span><span>5g</span></div>
+                        <div class="mt-4 text-[10px] text-gray-500 italic">No added sugar. Organic ingredients.</div>
+                    </div>
+                    </div>
+                    <h4 class="text-xl font-bold">Azure Runner</h4>
+                    <p class="text-gray-500">$120.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white text-black py-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="text-3xl font-bold tracking-tighter mb-4">YETI<span class="font-light"> BAR</span></div>
+                <p class="text-gray-500 max-w-sm">Sign up for our newsletter to receive curated aesthetic inspiration and exclusive product drops.</p>
+                <div class="mt-6 flex">
+                    <input type="email" placeholder="Your email" class="bg-gray-100 border-none p-3 w-64 focus:ring-1 focus:ring-black outline-none">
+                    <button class="bg-black text-white px-6 py-3 hover:bg-gray-800 transition">Join</button>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Support</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-black">Shipping</a></li>
+                    <li><a href="#" class="hover:text-black">Returns</a></li>
+                    <li><a href="#" class="hover:text-black">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest">Social</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-black">Instagram</a></li>
+                    <li><a href="#" class="hover:text-black">Twitter</a></li>
+                    <li><a href="#" class="hover:text-black">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-gray-100 text-xs text-gray-400 flex justify-between">
+            <p>© 2026 STUDIO MINIMAL. All rights reserved.</p>
+            <p>Designed for the Bold.</p>
+        </div>
+    </footer>
+
+
+     <script>
+        // --- VIDEO SLIDER LOGIC ---
+        const slides = document.querySelectorAll('.slide');
+        const progressBars = document.querySelectorAll('.progress-bar');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            // Remove active classes
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                // Reset animations for the text
+                const titles = slide.querySelectorAll('h2, p');
+                titles.forEach(t => {
+                    t.style.display = 'none'; // Briefly hide to re-trigger animate.css
+                    setTimeout(() => t.style.display = 'block', 10);
+                });
+            });
+            progressBars.forEach(bar => bar.classList.add('opacity-30'));
+
+            // Set new active slide
+            slides[index].classList.add('active');
+            progressBars[index].classList.remove('opacity-30');
+            progressBars[index].classList.add('opacity-100');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance every 5 seconds
+        setInterval(nextSlide, 5000);
+
+
+        // --- ORIGINAL SCROLL OBSERVER ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-trigger').forEach(el => observer.observe(el));
+    
+
+        // Scroll Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-trigger').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
